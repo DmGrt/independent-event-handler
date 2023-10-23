@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class OrderEventService {
-    public void processOrderEvent(OrderEvent orderEvent) {
-        // Implement the logic to process order-specific events.
-    }
+  public void processOrderEvent(OrderEvent orderEvent) {
+    // Implement the logic to process order-specific events.
+  }
 }

@@ -5,12 +5,11 @@ import com.event.handler.exception.ReportStorageException;
 import com.event.handler.model.Event;
 import com.event.handler.model.Report;
 import com.event.handler.repository.ReportRepository;
+import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.UUID;
 
 @Slf4j
 @Service

@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"com.event.handler.*"})
 public class EventHandlerApplication {
 
-    public static void main(String[] args){
-        SpringApplication.run(EventHandlerApplication.class);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(EventHandlerApplication.class);
+  }
 }

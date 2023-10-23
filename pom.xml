@@ -22,7 +22,6 @@
         <module>order-events-module</module>
         <module>product-events-module</module>
         <module>reporting-module</module>
-        <module>core-module</module>
     </modules>
 
     <properties>
@@ -113,6 +112,21 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.spotify.fmt</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>2.21.1</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.hibernate.orm.tooling</groupId>
                 <artifactId>hibernate-enhance-maven-plugin</artifactId>

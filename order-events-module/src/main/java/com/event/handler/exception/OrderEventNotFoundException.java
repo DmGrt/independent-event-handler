@@ -1,3 +1,3 @@
 package com.event.handler.exception;
 
-public class OrderEventNotFoundException extends RuntimeException{}
+public class OrderEventNotFoundException extends RuntimeException {}

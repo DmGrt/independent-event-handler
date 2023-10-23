@@ -2,10 +2,9 @@ package com.event.handler.service;
 
 import com.event.handler.model.Event;
 import com.event.handler.repository.EventRepository;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

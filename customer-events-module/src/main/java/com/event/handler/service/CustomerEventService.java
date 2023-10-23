@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class CustomerEventService {
-    public void processCustomerEvent(CustomerEvent customerEvent) {
-        // Implement the logic to process customer-specific events.
-    }
+  public void processCustomerEvent(CustomerEvent customerEvent) {
+    // Implement the logic to process customer-specific events.
+  }
 }
