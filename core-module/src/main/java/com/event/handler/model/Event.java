@@ -1,29 +1,25 @@
-package com.event.handler.entity;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
+package com.event.handler.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Report {
+public class Event {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
-
-  @Column private String reportType;
-  @Column private String content;
-  @Column private LocalDateTime generationDate;
+  @Column private String eventType;
+  @Column private String eventPayload;
+  @Column private long timestamp;
 }

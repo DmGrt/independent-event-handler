@@ -1,4 +1,4 @@
-package com.event.handler.entity;
+package com.event.handler.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
