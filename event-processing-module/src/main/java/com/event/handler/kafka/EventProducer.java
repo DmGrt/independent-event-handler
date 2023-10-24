@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EventProducer {
 
-  private static final String TOPIC = "event-handler-sent";
+  private static final String TOPIC = "event-handler-1";
 
   private final KafkaTemplate<String, String> kafkaTemplate;
 

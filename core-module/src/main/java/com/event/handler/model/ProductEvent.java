@@ -9,10 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document("event")
+@Document("productevent")
 @RequiredArgsConstructor
-public class Event {
-  @Id private UUID id;
+public class ProductEvent {
+
+  @Id private UUID productId;
 
   private String eventType;
   private String eventPayload;

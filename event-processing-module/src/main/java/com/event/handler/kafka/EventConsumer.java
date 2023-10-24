@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EventConsumer {
 
-  @KafkaListener(topics = "incoming-events", groupId = "event-handler-group")
+  @KafkaListener(topics = {"event-handler-1", "event-handler-2"})
   public void consume(String message) {
     log.info(String.format("#### -> Consumed message -> %s", message));
   }

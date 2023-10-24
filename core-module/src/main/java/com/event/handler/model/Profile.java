@@ -1,42 +1,18 @@
 package com.event.handler.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
 @Getter
 @Setter
+@Document("profile")
 @RequiredArgsConstructor
 public class Profile {
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID id;
-
-  @OneToOne
-  @JoinColumn(name = "id")
+  @Id private UUID id;
   private User user;
-
-  @Email
-  @Size(max = 255)
-  @Column(unique = true)
   private String email;
-
-  @PrePersist
-  @PreUpdate
-  private void prepareData() {
-    this.email = email == null ? null : email.toLowerCase();
-  }
 }

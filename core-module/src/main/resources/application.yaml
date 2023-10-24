@@ -1,8 +1,0 @@
-spring:
-  data:
-    mongodb:
-      database: event-handler
-      host: localhost
-      port: 27017
-      username: handler
-      password: handler

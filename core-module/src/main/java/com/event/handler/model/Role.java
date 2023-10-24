@@ -1,29 +1,21 @@
 package com.event.handler.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import java.util.Set;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
 @Getter
 @Setter
+@Document("role")
 @RequiredArgsConstructor
 public class Role {
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID id;
+  @Id private UUID id;
 
-  @Column private String name;
+  private String name;
 
-  @OneToMany(cascade = CascadeType.ALL)
   private Set<User> users;
 }
