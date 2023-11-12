@@ -2,7 +2,6 @@ package com.event.handler.service;
 
 import com.event.handler.model.Event;
 import com.event.handler.repository.EventRepository;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +28,7 @@ public class EventService {
     // Implement logic to store the event in a database or message queue.
   }
 
-  public Event getEventById(final UUID eventId) {
+  public Event getEventById(final Long eventId) {
     return eventRepository.findById(eventId).orElseThrow();
   }
 }

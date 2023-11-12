@@ -1,6 +1,5 @@
 package com.event.handler.model;
 
-import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("orderevent")
 @RequiredArgsConstructor
 public class OrderEvent {
-  @Id private UUID id;
+  @Id private Long id;
 
   private String eventType;
   private String eventPayload;

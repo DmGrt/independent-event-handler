@@ -1,6 +1,7 @@
 package com.event.handler.model;
 
-import java.util.UUID;
+
+import jakarta.persistence.Lob;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @RequiredArgsConstructor
 public class ProductEvent {
 
-  @Id private UUID productId;
+  @Id private Long productId;
+  private String name;
+  @Lob private String description;
 
   private String eventType;
   private String eventPayload;

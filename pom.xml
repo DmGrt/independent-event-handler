@@ -17,10 +17,7 @@
     <modules>
         <module>api-module</module>
         <module>core-module</module>
-        <module>customer-events-module</module>
         <module>event-processing-module</module>
-        <module>order-events-module</module>
-        <module>product-events-module</module>
         <module>reporting-module</module>
     </modules>
 

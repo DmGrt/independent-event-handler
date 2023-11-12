@@ -10,7 +10,6 @@ import com.event.handler.model.Event;
 import com.event.handler.model.Report;
 import com.event.handler.service.EventService;
 import com.event.handler.service.ReportingService;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,7 @@ public class EventHandlerController {
   private final ReportingService reportingService;
 
   @GetMapping("/events/{eventId}")
-  public ResponseEntity<Event> getEventById(@PathVariable UUID eventId) {
+  public ResponseEntity<Event> getEventById(@PathVariable Long eventId) {
     try {
       Event event = eventService.getEventById(eventId);
       if (event != null) {
@@ -61,7 +60,7 @@ public class EventHandlerController {
   }
 
   @GetMapping("/reports/{reportId}")
-  public ResponseEntity<Report> getReportById(@PathVariable UUID reportId) {
+  public ResponseEntity<Report> getReportById(@PathVariable Long reportId) {
     try {
       Report report = reportingService.getReportById(reportId);
       if (report != null) {

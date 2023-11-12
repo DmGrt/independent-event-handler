@@ -1,7 +1,6 @@
 package com.event.handler.model;
 
 import java.util.Date;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("user")
 @RequiredArgsConstructor
 public class User {
-  @Id private UUID id;
+  @Id private Long id;
 
   private String firstName;
   private String secondName;
