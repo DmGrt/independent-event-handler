@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Event {
   @Id private Long id;
 
-  private String eventType;
-  @Lob private String eventPayload;
+  private String type;
+  @Lob private String payload;
   private long timestamp;
 }

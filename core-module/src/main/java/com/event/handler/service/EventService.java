@@ -3,6 +3,7 @@ package com.event.handler.service;
 import com.event.handler.model.Event;
 import com.event.handler.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,19 +14,33 @@ public class EventService {
 
   // Event handling methods
   public void processEvent(final Event event) {
-    // Implement domain-independent processing logic.
+    validateEvent(event);
+    transformEvent(event);
+    storeEvent(event);
   }
 
   public void validateEvent(final Event event) {
-    // Implement validation logic for the event.
+    if (event == null) {
+      throw new IllegalArgumentException("Event must not be null");
+    }
+
+    if (event.getType() == null || event.getType().trim().isEmpty()) {
+      throw new IllegalArgumentException("Event type must be specified");
+    }
+
+    if (StringUtils.isNoneEmpty(event.getPayload())) {
+      throw new IllegalArgumentException("Event value must be a positive number");
+    }
   }
 
   public void transformEvent(final Event event) {
-    // Implement transformation logic for the event if needed.
+    if (event != null && event.getType() != null) {
+      event.setType(event.getType().toUpperCase());
+    }
   }
 
   public void storeEvent(final Event event) {
-    // Implement logic to store the event in a database or message queue.
+    eventRepository.save(event);
   }
 
   public Event getEventById(final Long eventId) {
