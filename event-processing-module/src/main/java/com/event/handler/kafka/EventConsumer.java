@@ -16,7 +16,7 @@ public class EventConsumer {
   private final EventProcessor eventProcessor;
   private final Gson gson;
 
-  @KafkaListener(topics = {"event-handler-1", "event-handler-2"})
+  @KafkaListener(topics = {"eventHandler1", "eventHandler2"})
   public void consume(String message) {
     Event event = gson.fromJson(gson.toJson(message), Event.class);
     eventProcessor.processEvent(event);
