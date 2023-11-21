@@ -1,7 +1,7 @@
 package com.event.handler.model;
 
-
 import jakarta.persistence.Lob;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -17,5 +17,16 @@ public class Event {
 
   private String type;
   @Lob private String payload;
-  private long timestamp;
+  private LocalDateTime timestamp;
+
+  public String getMainInfo() {
+    return "Event: "
+        + type
+        + "\n"
+        + "Was processed on: "
+        + timestamp
+        + "\n"
+        + "Event payload: "
+        + payload;
+  }
 }

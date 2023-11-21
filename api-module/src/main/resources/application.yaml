@@ -8,6 +8,19 @@ spring:
       username: handler
       authentication-database: admin
 
+  mail:
+    host: smtp.gmail.com
+    protocol: smtp
+    username: hrytsyshyn.dmytro@lll.kpi.ua
+    password: erneoajesgwzseoi
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
   jpa:
     open-in-view: false
 
@@ -21,3 +34,9 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     bootstrap-servers: localhost:9092
+
+handler:
+  config:
+    mail:
+      receivers:
+        - hrytsyshyn.dmytro@gmail.com

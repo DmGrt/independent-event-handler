@@ -18,7 +18,7 @@
         <module>api-module</module>
         <module>core-module</module>
         <module>event-processing-module</module>
-        <module>reporting-module</module>
+        <module>notification-module</module>
     </modules>
 
     <properties>
