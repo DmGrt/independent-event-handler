@@ -14,4 +14,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("handler.config.mail")
 public class EventHandlerConfigurationProperties {
   public List<String> receivers;
+  public long notificationPeriod;
 }

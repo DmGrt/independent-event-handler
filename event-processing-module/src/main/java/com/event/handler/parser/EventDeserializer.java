@@ -17,7 +17,7 @@ public class EventDeserializer implements JsonDeserializer<Event> {
     Event event = new Event();
     event.setTimestamp(LocalDateTime.now());
     event.setType(jsonElement.getAsJsonObject().get("type").getAsString());
-    event.setPayload(jsonElement.getAsString());
+    event.setPayload(jsonElement.toString());
     return event;
   }
 }

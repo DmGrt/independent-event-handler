@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   data:
     mongodb:
@@ -40,3 +43,4 @@ handler:
     mail:
       receivers:
         - hrytsyshyn.dmytro@gmail.com
+      notificationPeriod: 5

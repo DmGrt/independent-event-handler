@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class EventProcessingConfiguration {
-
   @Bean
   public Gson gsonBean() {
     return new GsonBuilder()

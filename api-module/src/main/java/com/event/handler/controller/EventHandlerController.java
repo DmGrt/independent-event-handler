@@ -8,8 +8,14 @@ import com.event.handler.exception.EventValidationException;
 import com.event.handler.exception.ReportNotFoundException;
 import com.event.handler.model.Event;
 import com.event.handler.model.Report;
+import com.event.handler.notification.Notificator;
 import com.event.handler.service.EventService;
 import com.event.handler.service.ReportingService;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +33,8 @@ public class EventHandlerController {
 
   private final EventService eventService;
   private final ReportingService reportingService;
+  private final HttpClient httpClient;
+  private final Notificator notificator;
 
   @GetMapping("/events/{eventId}")
   public ResponseEntity<Event> getEventById(@PathVariable Long eventId) {
@@ -71,5 +79,32 @@ public class EventHandlerController {
     } catch (ReportNotFoundException e) {
       return ResponseEntity.notFound().build();
     }
+  }
+
+  @GetMapping("/init")
+  public void init() throws IOException, InterruptedException {
+    HttpRequest paymentsRequest =
+        HttpRequest.newBuilder()
+            .GET()
+            .uri(URI.create("http://localhost:8081/api/payment-events/initiate"))
+            .build();
+    httpClient.send(paymentsRequest, HttpResponse.BodyHandlers.ofString());
+    HttpRequest ordersRequest =
+        HttpRequest.newBuilder()
+            .GET()
+            .uri(URI.create("http://localhost:8082/api/order-events/initiate"))
+            .build();
+    httpClient.send(ordersRequest, HttpResponse.BodyHandlers.ofString());
+    HttpRequest customerEventsRequest =
+        HttpRequest.newBuilder()
+            .GET()
+            .uri(URI.create("http://localhost:8083/api/customer-events/initiate"))
+            .build();
+    httpClient.send(customerEventsRequest, HttpResponse.BodyHandlers.ofString());
+  }
+
+  @GetMapping("/notify")
+  public void notifyUsers() {
+    notificator.notifySubscribersWith();
   }
 }

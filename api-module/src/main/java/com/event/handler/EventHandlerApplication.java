@@ -1,7 +1,7 @@
 package com.event.handler;
 
 import com.event.handler.config.EventHandlerConfiguration;
-import com.event.handler.config.props.EventHandlerConfigurationProperties;
+import com.event.handler.configuration.EventProcessingConfiguration;
 import com.event.handler.controller.EventHandlerController;
 import com.event.handler.kafka.EventProducer;
 import com.event.handler.notification.Notificator;
@@ -28,7 +28,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     })
 @EnableTransactionManagement
 @EnableMongoRepositories
-@Import(EventHandlerConfiguration.class)
+@Import({
+  EventHandlerConfiguration.class,
+  com.event.handler.conf.EventHandlerConfiguration.class,
+  EventProcessingConfiguration.class
+})
 public class EventHandlerApplication {
 
   public static void main(String[] args) {
