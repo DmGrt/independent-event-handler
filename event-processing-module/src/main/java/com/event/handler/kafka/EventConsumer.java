@@ -10,6 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -20,6 +23,7 @@ public class EventConsumer {
 
   @KafkaListener(topics = {"eventHandler1", "eventHandler2"})
   public void consume(String message) {
+    LocalDateTime startProcessing = LocalDateTime.now();
     try {
       processMessage(message);
       return;
@@ -31,6 +35,8 @@ public class EventConsumer {
     for (JsonElement next : jsonElements) {
       processMessage(next.toString());
     }
+    LocalDateTime endProcessing = LocalDateTime.now();
+    log.info("Processed takes: {} milliseconds", Duration.between(startProcessing, endProcessing).toMillis());
   }
 
   private void processMessage(String message) {

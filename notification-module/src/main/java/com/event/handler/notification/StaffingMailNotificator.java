@@ -3,6 +3,8 @@ package com.event.handler.notification;
 import com.event.handler.config.props.EventHandlerConfigurationProperties;
 import com.event.handler.model.Event;
 import com.event.handler.repository.EventRepository;
+
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,10 +45,16 @@ public class StaffingMailNotificator implements Notificator {
   }
 
   private String getTextMessage() {
+    LocalDateTime startProcessing = LocalDateTime.now();
     List<Event> newEvents =
         eventRepository.findAllByTimestampAfter(
             LocalDateTime.now()
                 .minusMinutes(eventHandlerConfigurationProperties.getNotificationPeriod()));
+    LocalDateTime endProcessing = LocalDateTime.now();
+    log.info(
+        "{} were processed for {} milliseconds",
+        newEvents.size(),
+        Duration.between(startProcessing, endProcessing));
     return FIRST_MESSAGE_PART
         + newEvents.stream().map(Event::getMainInfo).collect(Collectors.joining("\r\n--------\n"));
   }
